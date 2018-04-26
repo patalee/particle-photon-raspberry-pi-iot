@@ -62,6 +62,24 @@ void loop(){
     if ( myAutoControl ){
     
      //PUT YOUR SPECIAL LOOP CODE HERE 
+         delay(2000);
+   a0h = analogRead(A0);
+
+   Particle.publish("WaterSensor14", String(a0h), 60, PRIVATE); 
+
+ 
+
+   
+    if(a0h > 350){
+   
+       digitalWrite(D5, 1);
+        delay(1000);
+       Particle.publish("WATER", "AAAAAARRRRRRGGG", 60, PRIVATE); 
+
+    } else {
+       digitalWrite(D5, 0);
+   }
+   
     if ( ShowConsoleMessages  ){ 
         Particle.publish("Special Loop", "Active", 60, PRIVATE);  
         delay(5000);
